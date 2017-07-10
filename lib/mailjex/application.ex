@@ -11,6 +11,8 @@ defmodule Mailjex.Application do
     # Define workers and child supervisors to be supervised
     children = [
       worker(Mailjex.Message, []),
+      worker(Mailjex.Template, []),
+      worker(Mailjex.Delivery, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

@@ -1,5 +1,9 @@
 defmodule Mailjex.Message do
-  @moduledoc false
+  @moduledoc """
+  Retrieve useful information about messages
+  (emails) processed by MailJet.
+  """
+  
   use GenServer
   alias Mailjex.Api.Message
   @behaviour Mailjex.Behaviour.Message
@@ -10,8 +14,32 @@ defmodule Mailjex.Message do
     GenServer.start_link(__MODULE__, initial_state, [name: __MODULE__])
   end
 
+  ##########################
   # Public API
+  ##########################
 
+  @doc """
+  List information on all messages that
+  have been sent via MailJet. Note, filters
+  can be passed to this function as a 
+  optional map parameter i.e. 
+  `.list(%{Campaign: 9999850})`.
+
+  ## Examples
+
+      iex> Mailjex.Message.list
+      {:ok,
+      %{"Count" => 1,
+        "Data" => [%{"ArrivedAt" => "2017-07-08T22:28:38Z", "AttachmentCount" => 0,
+          "AttemptCount" => 0, "CampaignID" => 9999849, "ContactID" => 9999649449,
+          "Delay" => 510, "DestinationID" => 2, "FilterTime" => 102,
+          "ID" => 99999042389999999, "IsClickTracked" => false,
+          "IsHTMLPartIncluded" => true, "IsOpenTracked" => true,
+          "IsTextPartIncluded" => false, "IsUnsubTracked" => false,
+          "MessageSize" => 12794, "SenderID" => 9999974051, "SpamassRules" => "",
+          "SpamassassinScore" => 0, "StatePermanent" => false,
+          "Status" => "opened"}], "Total" => 1}}
+  """
   def list(params \\ %{}) do
     GenServer.call(__MODULE__, {:list, params})
   end
@@ -36,7 +64,9 @@ defmodule Mailjex.Message do
     GenServer.call(__MODULE__, {:statistics, params})
   end
 
+  ##########################
   # GenServer Callbacks
+  ##########################
 
   def handle_call({:list, params}, _from, state) do
     {:reply, Message.list(params), state}
