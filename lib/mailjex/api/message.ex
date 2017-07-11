@@ -1,4 +1,5 @@
 defmodule Mailjex.Api.Message do
+  @moduledoc false
   import Mailjex.Utils.Comms
 
   def list(params \\ %{}) do

@@ -1,4 +1,5 @@
 defmodule Mailjex.Api.Delivery do
+  @moduledoc false
   import Mailjex.Utils.Comms
   
   def send(body) do

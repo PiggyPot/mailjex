@@ -1,4 +1,5 @@
 defmodule Mailjex.Utils.Comms do
+  @moduledoc false
   @api_base Application.fetch_env!(:mailjex, :api_base)
   @public_api_key Application.fetch_env!(:mailjex, :public_api_key)
   @private_api_key Application.fetch_env!(:mailjex, :private_api_key)
