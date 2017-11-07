@@ -8,7 +8,7 @@ Elixir wrapper for the MailJet API.
 
 ```elixir
 def deps do
-  [{:mailjex, "~> 0.1.1"}]
+  [{:mailjex, "~> 0.1.2"}]
 end
 ```
 
@@ -34,6 +34,7 @@ config :mailjex,
   api_base: "https://api.mailjet.com/v3",
   public_api_key: "<your public key>",
   private_api_key: "<your private key>"
+  development_mode: true | false
 ```
 
 4. Example usage:
