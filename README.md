@@ -8,7 +8,7 @@ Elixir wrapper for the MailJet API.
 
 ```elixir
 def deps do
-  [{:mailjex, "~> 0.1.2"}]
+  [{:mailjex, "~> 0.1.3"}]
 end
 ```
 
