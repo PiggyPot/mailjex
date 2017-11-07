@@ -16,8 +16,10 @@ defmodule Mailjex.Utils.Comms do
     |> headers
 
     if @development_mode do
-      IO.inspect(hdrs)
-      %HTTPotion.Response{body: hdrs, headers: [], status_code: 200}
+      IO.puts "Development Mode Enabled"
+      IO.inspect(body, label: "Body")
+      IO.inspect(hdrs, label: "Headers")
+      %HTTPotion.Response{body: "", headers: [], status_code: 200}
     else
       path
       |> api_url
