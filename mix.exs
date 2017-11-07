@@ -38,7 +38,7 @@ defmodule Mailjex.Mixfile do
 
   defp package do
     [
-      maintainers: ["overture8"],
+      maintainers: ["overture8", "tosbourn"],
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/PiggyPot/mailjex"}
     ]
