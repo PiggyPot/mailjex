@@ -1,5 +1,6 @@
 defmodule Mailjex.Utils.Comms do
   @moduledoc false
+  require Logger
   @api_base Application.fetch_env!(:mailjex, :api_base)
   @public_api_key Application.fetch_env!(:mailjex, :public_api_key)
   @private_api_key Application.fetch_env!(:mailjex, :private_api_key)
@@ -20,9 +21,8 @@ defmodule Mailjex.Utils.Comms do
     end
 
     if development_mode do
-      IO.puts "Mailjex Development Mode Enabled"
-      IO.inspect(body, label: "Mailjex Body")
-      IO.inspect(hdrs, label: "Mailjex Headers")
+      Logger.info "Mailjex Development Mode Enabled"
+      Logger.info "Mailjex Body: #{Poison.encode!(body)}"
       %HTTPotion.Response{body: "", headers: [], status_code: 200}
     else
       path
