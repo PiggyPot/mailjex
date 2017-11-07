@@ -51,6 +51,12 @@ iex> body = %{
 iex> Mailjex.Delivery.send(body)
 ```
 
+## Development Mode
+
+When running in development or test environments you may not want to actually send emails. You can disable the sending of email and instead have the body of your request logged to the screen.
+
+You can do this by setting `development_mode: true` in your configuration file for your environment.
+
 ## For more information, see the Hex docs
 
 You can read the docs [here](https://hexdocs.pm/mailjex)
