@@ -3,6 +3,7 @@ defmodule Mailjex.Utils.Comms do
   @api_base Application.fetch_env!(:mailjex, :api_base)
   @public_api_key Application.fetch_env!(:mailjex, :public_api_key)
   @private_api_key Application.fetch_env!(:mailjex, :private_api_key)
+  @development_mode Application.fetch_env!(:mailjex, :development_mode)
 
   def request(:get, path) do
     path
@@ -14,9 +15,16 @@ defmodule Mailjex.Utils.Comms do
     hdrs = [body: Poison.encode!(body)]
     |> headers
 
-    path
-    |> api_url
-    |> HTTPotion.post(hdrs)
+    if @development_mode do
+      IO.puts "Mailjex Development Mode Enabled"
+      IO.inspect(body, label: "Mailjex Body")
+      IO.inspect(hdrs, label: "Mailjex Headers")
+      %HTTPotion.Response{body: "", headers: [], status_code: 200}
+    else
+      path
+      |> api_url
+      |> HTTPotion.post(hdrs)
+    end
   end
 
   def request(:put, path, body) do
