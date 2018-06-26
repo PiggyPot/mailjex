@@ -8,7 +8,7 @@ Elixir wrapper for the MailJet API.
 
 ```elixir
 def deps do
-  [{:mailjex, "~> 0.1.1"}]
+  [{:mailjex, "~> 0.1.2"}]
 end
 ```
 
@@ -74,7 +74,7 @@ Resources that are implemented so far.
 - [x] Template
 - [ ] Sender Templates and Domains
 - [ ] Contact Lists
-- [ ] Contact Properties
+- [x] Contact
 - [ ] Campaigns
 - [ ] Statistics
 - [ ] Parse API

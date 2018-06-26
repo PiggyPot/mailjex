@@ -12,7 +12,8 @@ defmodule Mailjex.Application do
     children = [
       worker(Mailjex.Message, []),
       worker(Mailjex.Template, []),
-      worker(Mailjex.Delivery, [])
+      worker(Mailjex.Delivery, []),
+      worker(Mailjex.Contact, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
