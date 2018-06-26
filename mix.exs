@@ -3,7 +3,11 @@ defmodule Mailjex.Mixfile do
 
   def project do
     [app: :mailjex,
+<<<<<<< HEAD
      version: "0.1.2",
+=======
+     version: "0.1.3",
+>>>>>>> facbeec029521c028549cc581cd02ef75888ec11
      description: "Elixir wrapper for the MailJet API",
      package: package(),
      elixir: "~> 1.4",
@@ -38,7 +42,7 @@ defmodule Mailjex.Mixfile do
 
   defp package do
     [
-      maintainers: ["overture8"],
+      maintainers: ["overture8", "tosbourn"],
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/PiggyPot/mailjex"}
     ]

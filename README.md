@@ -8,7 +8,7 @@ Elixir wrapper for the MailJet API.
 
 ```elixir
 def deps do
-  [{:mailjex, "~> 0.1.2"}]
+  [{:mailjex, "~> 0.1.4"}]
 end
 ```
 
@@ -34,6 +34,7 @@ config :mailjex,
   api_base: "https://api.mailjet.com/v3",
   public_api_key: "<your public key>",
   private_api_key: "<your private key>"
+  development_mode: true | false
 ```
 
 4. Example usage:
@@ -50,6 +51,12 @@ iex> body = %{
 ...> }
 iex> Mailjex.Delivery.send(body)
 ```
+
+## Development Mode
+
+When running in development or test environments you may not want to actually send emails. You can disable the sending of email and instead have the body of your request logged to the screen.
+
+You can do this by setting `development_mode: true` in your configuration file for your environment.
 
 ## For more information, see the Hex docs
 
