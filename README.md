@@ -14,12 +14,12 @@ end
 
 then...
 
-```elixir
+```sh
 mix deps.get
 ```
 
 
-2. Ensure `mailjex` is started before your application:
+2. Ensure `mailjex` is started before your application (not required for Elixir >= 1.4)
 
 ```elixir
 def application do
