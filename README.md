@@ -92,3 +92,7 @@ Resources that are implemented so far.
 Areas of the codebase that can be improved.
 
 - [ ] Testing error cases
+
+## License
+
+The `mailjex` lib is released under the [MIT License](http://www.opensource.org/licenses/MIT).
