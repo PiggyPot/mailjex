@@ -1,9 +1,10 @@
 defmodule Mailjex.Utils.Comms do
   @moduledoc false
   require Logger
-  @api_base Application.fetch_env!(:mailjex, :api_base)
-  @public_api_key Application.fetch_env!(:mailjex, :public_api_key)
-  @private_api_key Application.fetch_env!(:mailjex, :private_api_key)
+
+  defp api_base, do: Application.fetch_env!(:mailjex, :api_base)
+  defp public_api_key, do: Application.fetch_env!(:mailjex, :public_api_key)
+  defp private_api_key, do: Application.fetch_env!(:mailjex, :private_api_key)
 
   def request(:get, path) do
     path
@@ -53,12 +54,12 @@ defmodule Mailjex.Utils.Comms do
   end
 
   defp api_url(url) do
-    @api_base <> url
+    api_base() <> url
   end
 
   defp headers, do: headers([])
   defp headers(body) do
-    basic_auth = "#{@public_api_key}:#{@private_api_key}" |> Base.encode64
+    basic_auth = "#{public_api_key()}:#{private_api_key()}" |> Base.encode64
     [headers: ["Authorization": "Basic #{basic_auth}",
                "Accepts": "application/json",
                "Content-Type": "application/json"]] ++ body

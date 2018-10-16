@@ -4,7 +4,6 @@ defmodule Mailjex.Api.Message do
 
   def list(params \\ %{}) do
     url_params = params |> URI.encode_query
-    IO.inspect url_params
 
     request(:get, "/REST/message?#{url_params}")
     |> decode_json
