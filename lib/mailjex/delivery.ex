@@ -35,15 +35,15 @@ defmodule Mailjex.Delivery do
       ...>}
       iex> Mailjex.Delivery.send(body)
   """
-  def send(body) do
-    GenServer.call(__MODULE__, {:send, body})
+  def send(body, public_key \\ nil, private_key \\ nil) do
+    GenServer.call(__MODULE__, {:send, body, public_key, private_key})
   end
 
   ##########################
   # GenServer Callbacks
   ##########################
 
-  def handle_call({:send, body}, _from, state) do
-    {:reply, Delivery.send(body), state}
+  def handle_call({:send, body, public_key, private_key}, _from, state) do
+    {:reply, Delivery.send(body, public_key, private_key), state}
   end
 end

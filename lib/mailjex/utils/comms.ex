@@ -12,9 +12,10 @@ defmodule Mailjex.Utils.Comms do
     |> HTTPotion.get(headers())
   end
 
-  def request(:post, path, body) do
+  def request(method, path, body, public_key \\ nil, private_key \\ nil)
+  def request(:post, path, body, public_key, private_key) do
     hdrs = [body: Poison.encode!(body)]
-    |> headers
+    |> headers(public_key, private_key)
 
     development_mode = case Application.fetch_env(:mailjex, :development_mode) do
       {:ok, true} -> true
@@ -32,9 +33,9 @@ defmodule Mailjex.Utils.Comms do
     end
   end
 
-  def request(:put, path, body) do
+  def request(:put, path, body, public_key, private_key) do
     hdrs = [body: Poison.encode!(body)]
-    |> headers
+    |> headers(public_key, private_key)
 
     path
     |> api_url
@@ -58,8 +59,8 @@ defmodule Mailjex.Utils.Comms do
   end
 
   defp headers, do: headers([])
-  defp headers(body) do
-    basic_auth = "#{public_api_key()}:#{private_api_key()}" |> Base.encode64
+  defp headers(body, public_key \\ nil, private_key \\ nil) do
+    basic_auth = "#{public_key || public_api_key()}:#{private_key || private_api_key()}" |> Base.encode64
     [headers: ["Authorization": "Basic #{basic_auth}",
                "Accepts": "application/json",
                "Content-Type": "application/json"]] ++ body
