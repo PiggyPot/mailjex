@@ -32,7 +32,11 @@ defmodule Mailjex.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:httpotion, "~> 3.0.2"}, {:poison, "~> 3.0"}, {:ex_doc, ">= 0.0.0", only: :dev}]
+    [
+      {:httpotion, "~> 3.0.2"},
+      {:poison, "~> 3.0"},
+      {:ex_doc, "~> 0.19.0", only: :dev, runtime: false}
+    ]
   end
 
   defp package do
