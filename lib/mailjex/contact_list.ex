@@ -19,7 +19,6 @@ defmodule Mailjex.ContactList do
   @doc """
   Allows you to manage the presence and subscription
   status of a contact to a specific contact list. 
-  a given contact is on.
 
   ## Examples
 
