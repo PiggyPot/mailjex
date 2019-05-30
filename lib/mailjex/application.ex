@@ -13,6 +13,7 @@ defmodule Mailjex.Application do
       worker(Mailjex.Message, []),
       worker(Mailjex.Template, []),
       worker(Mailjex.Delivery, []),
+      worker(Mailjex.Send, []),
       worker(Mailjex.ContactList, []),
       worker(Mailjex.Contact, [])
     ]
