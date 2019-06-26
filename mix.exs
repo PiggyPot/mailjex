@@ -4,7 +4,7 @@ defmodule Mailjex.Mixfile do
   def project do
     [
       app: :mailjex,
-      version: "0.1.6",
+      version: "0.2.6",
       description: "Elixir wrapper for the MailJet API",
       package: package(),
       elixir: "~> 1.4",
