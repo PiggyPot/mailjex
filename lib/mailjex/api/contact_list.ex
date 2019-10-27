@@ -7,7 +7,7 @@ defmodule Mailjex.Api.ContactList do
     |> decode_json
   end
 
-  def manage_contact_in_list(list_id, body) do
+  def manage_many_contacts_in_list(list_id, body) do
     request(:post, "/REST/contactslist/#{list_id}/managemanycontacts", body)
     |> decode_json
   end
