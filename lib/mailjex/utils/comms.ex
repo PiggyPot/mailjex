@@ -12,6 +12,29 @@ defmodule Mailjex.Utils.Comms do
     |> HTTPotion.get(headers())
   end
 
+  def request(:get, path, options) do
+    options = options ++ headers()
+    path
+    |> api_url
+    |> HTTPotion.get(options)
+  end
+
+  def request(:put, path, body) do
+    options = [body: Poison.encode!(body)]
+    |> headers()
+
+    path
+    |> api_url
+    |> HTTPotion.put(options)
+  end
+
+  def request(:delete, path, options) do
+    options = options ++ headers()
+    path
+    |> api_url
+    |> HTTPotion.delete(options)
+  end
+
   def request(method, path, body, public_key \\ nil, private_key \\ nil)
   def request(:post, path, body, public_key, private_key) do
     hdrs = [body: Poison.encode!(body)]
