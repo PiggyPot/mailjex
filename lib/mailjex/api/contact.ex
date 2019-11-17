@@ -26,4 +26,9 @@ defmodule Mailjex.Api.Contact do
     request(:post, "/REST/contact/#{id}/managecontactslists", body)
     |> decode_json
   end
+
+  def get_contacts_lists(id) do
+    request(:get, "/REST/contact/#{id}/getcontactslists")
+    |> decode_json
+  end
 end

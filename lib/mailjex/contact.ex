@@ -81,6 +81,19 @@ defmodule Mailjex.Contact do
     GenServer.call(__MODULE__, {:manage_contacts_lists, id, body})
   end
 
+  @doc """
+
+  Allows you to retrieve all contact lists
+  for a specific contact
+
+  ## Examples
+
+      iex> Mailjex.Contact.get_contacts_lists("1234ID")
+  """
+  def get_contacts_lists(id) do
+    GenServer.call(__MODULE__, {:get_contacts_lists, id})
+  end
+
   ##########################
   # GenServer Callbacks
   ##########################
@@ -103,5 +116,9 @@ defmodule Mailjex.Contact do
 
   def handle_call({:manage_contacts_lists, id, body}, _from, state) do
     {:reply, Contact.manage_contacts_lists(id, body), state}
+  end
+
+  def handle_call({:get_contacts_lists, id}, _from, state) do
+    {:reply, Contact.get_contacts_lists(id), state}
   end
 end
